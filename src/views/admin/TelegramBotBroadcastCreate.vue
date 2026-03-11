@@ -50,6 +50,7 @@ const pagination = ref({
 
 const allPageSelected = computed(() => users.value.length > 0 && users.value.every((item) => selectedUserIds.value.includes(item.user_id)))
 const selectedCount = computed(() => selectedUserIds.value.length)
+const shouldNotifyLocally = (error: unknown) => !(error as { __notified?: boolean } | undefined)?.__notified
 
 const fetchUsers = async (page = 1) => {
   if (form.recipient_type !== 'specific') return
@@ -67,9 +68,11 @@ const fetchUsers = async (page = 1) => {
     })
     users.value = res.data?.data || []
     pagination.value = res.data?.pagination || pagination.value
-  } catch {
+  } catch (error) {
     users.value = []
-    notifyError(t('telegramBot.broadcasts.userLoadFailed'))
+    if (shouldNotifyLocally(error)) {
+      notifyError(t('telegramBot.broadcasts.userLoadFailed'))
+    }
   } finally {
     loadingUsers.value = false
   }
@@ -129,8 +132,10 @@ const handleAttachmentChange = async (event: Event) => {
     form.attachment_url = String(data.url || '')
     form.attachment_name = String(data.filename || file.name || '')
     notifySuccess(t('telegramBot.broadcasts.uploadSuccess'))
-  } catch {
-    notifyError(t('telegramBot.broadcasts.uploadFailed'))
+  } catch (error) {
+    if (shouldNotifyLocally(error)) {
+      notifyError(t('telegramBot.broadcasts.uploadFailed'))
+    }
   } finally {
     uploading.value = false
     if (fileInput.value) fileInput.value.value = ''
@@ -169,8 +174,10 @@ const handleSubmit = async () => {
     })
     notifySuccess(t('telegramBot.broadcasts.createSuccess'))
     router.push('/telegram-bot/broadcasts')
-  } catch {
-    notifyError(t('telegramBot.broadcasts.createFailed'))
+  } catch (error) {
+    if (shouldNotifyLocally(error)) {
+      notifyError(t('telegramBot.broadcasts.createFailed'))
+    }
   } finally {
     submitting.value = false
   }
