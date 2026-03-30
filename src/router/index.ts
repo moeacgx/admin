@@ -256,6 +256,12 @@ const routes = [
         component: () => import('@/views/admin/TelegramBotBroadcastCreate.vue'),
         meta: { permission: 'GET:/admin/telegram-bot/broadcasts' },
       },
+      {
+        path: 'telegram-bot/broadcasts/:id',
+        name: 'telegram-bot-broadcast-detail',
+        component: () => import('@/views/admin/TelegramBotBroadcastDetail.vue'),
+        meta: { permission: 'GET:/admin/telegram-bot/broadcasts' },
+      },
     ],
   },
 ]

@@ -454,6 +454,8 @@ export const adminAPI = {
   getTelegramBotRuntimeStatus: () => api.get<ApiResponse<AdminTelegramBotRuntimeStatus>>('/admin/settings/telegram-bot/runtime-status'),
   getTelegramBroadcasts: (params?: Record<string, unknown>) =>
     api.get<ApiResponse<AdminTelegramBroadcast[]>>('/admin/telegram-bot/broadcasts', { params }),
+  getTelegramBroadcast: (id: number) =>
+    api.get<ApiResponse<AdminTelegramBroadcast>>(`/admin/telegram-bot/broadcasts/${id}`),
   createTelegramBroadcast: (data: {
     title: string
     recipient_type: string

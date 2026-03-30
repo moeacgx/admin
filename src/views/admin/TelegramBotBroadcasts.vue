@@ -11,7 +11,7 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@
 import { formatDate, toRFC3339 } from '@/utils/format'
 import { confirmAction } from '@/utils/confirm'
 import { notifyError, notifySuccess } from '@/utils/notify'
-import { Loader2, Send, Trash2 } from 'lucide-vue-next'
+import { Eye, Loader2, Send, Trash2 } from 'lucide-vue-next'
 
 const { t } = useI18n()
 
@@ -215,15 +215,23 @@ onMounted(() => {
                 <TableCell class="min-w-[100px]">{{ formatDate(item.created_at) || '-' }}</TableCell>
                 <TableCell class="min-w-[100px]">{{ formatDate(item.completed_at || '') || '-' }}</TableCell>
                 <TableCell class="min-w-[100px] text-right">
-                  <Button
-                    variant="destructive"
-                    size="sm"
-                    :disabled="!canDelete(item) || deletingId === item.id"
-                    @click="handleDelete(item)"
-                  >
-                    <Trash2 class="mr-2 h-4 w-4" />
-                    {{ deletingId === item.id ? t('admin.common.loading') : t('telegramBot.broadcasts.delete') }}
-                  </Button>
+                  <div class="flex items-center justify-end gap-2">
+                    <Button variant="outline" size="sm" as-child>
+                      <RouterLink :to="`/telegram-bot/broadcasts/${item.id}`">
+                        <Eye class="mr-2 h-4 w-4" />
+                        {{ t('telegramBot.broadcasts.detail') }}
+                      </RouterLink>
+                    </Button>
+                    <Button
+                      variant="destructive"
+                      size="sm"
+                      :disabled="!canDelete(item) || deletingId === item.id"
+                      @click="handleDelete(item)"
+                    >
+                      <Trash2 class="mr-2 h-4 w-4" />
+                      {{ deletingId === item.id ? t('admin.common.loading') : t('telegramBot.broadcasts.delete') }}
+                    </Button>
+                  </div>
                 </TableCell>
               </TableRow>
             </TableBody>
