@@ -1441,7 +1441,7 @@ const messages = {
         empty: '暂无素材',
         uploadNew: '上传素材',
         confirmDelete: '确认删除素材 "{name}"？',
-        deleteWarning: '删除后，已使用该素材的地方仍可正常显示，但素材将不再出现在素材库中。',
+        deleteWarning: '删除后，素材文件将被永久移除，已使用该素材的地方将无法正常显示。',
         filters: {
           scenePlaceholder: '选择场景',
           sceneAll: '全部场景',
@@ -4426,7 +4426,7 @@ const messages = {
         empty: '暫無素材',
         uploadNew: '上傳素材',
         confirmDelete: '確認刪除素材「{name}」？',
-        deleteWarning: '刪除後，已使用該素材的地方仍可正常顯示，但素材將不再出現在素材庫中。',
+        deleteWarning: '刪除後，素材檔案將被永久移除，已使用該素材的地方將無法正常顯示。',
         filters: {
           scenePlaceholder: '選擇場景',
           sceneAll: '全部場景',
@@ -7411,7 +7411,7 @@ const messages = {
         empty: 'No media yet',
         uploadNew: 'Upload Media',
         confirmDelete: 'Delete media "{name}"?',
-        deleteWarning: 'After deletion, places using this media will still display normally, but it will no longer appear in the media library.',
+        deleteWarning: 'After deletion, the media file will be permanently removed and places using it will no longer display properly.',
         filters: {
           scenePlaceholder: 'Select scene',
           sceneAll: 'All scenes',
