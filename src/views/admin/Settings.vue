@@ -12,6 +12,7 @@ import SettingsSMTPTab from './components/SettingsSMTPTab.vue'
 import SettingsCaptchaTab from './components/SettingsCaptchaTab.vue'
 import SettingsOrderEmailTemplateTab from './components/SettingsOrderEmailTemplateTab.vue'
 import SettingsNavigationTab from './components/SettingsNavigationTab.vue'
+import SettingsOrderRiskControlTab from './components/SettingsOrderRiskControlTab.vue'
 
 const { t } = useI18n()
 const loading = ref(false)
@@ -19,6 +20,7 @@ const smtpTabRef = ref<InstanceType<typeof SettingsSMTPTab>>()
 const captchaTabRef = ref<InstanceType<typeof SettingsCaptchaTab>>()
 const orderEmailTemplateTabRef = ref<InstanceType<typeof SettingsOrderEmailTemplateTab>>()
 const navigationTabRef = ref<InstanceType<typeof SettingsNavigationTab>>()
+const orderRiskControlTabRef = ref<InstanceType<typeof SettingsOrderRiskControlTab>>()
 const supportedLanguages = ['zh-CN', 'zh-TW', 'en-US'] as const
 type SupportedLanguage = (typeof supportedLanguages)[number]
 type SiteScriptPosition = 'head' | 'body_end'
@@ -66,6 +68,7 @@ const tabs = computed(() => [
   { label: t('admin.settings.tabs.dashboard'), value: 'dashboard' },
   { label: t('admin.settings.tabs.wallet'), value: 'wallet' },
   { label: t('admin.settings.tabs.callbackRoutes'), value: 'callback_routes' },
+  { label: t('admin.settings.tabs.orderRiskControl'), value: 'order_risk_control' },
 ])
 
 const fallbackCurrencyOptions = [
@@ -768,6 +771,10 @@ const saveSettings = async () => {
     await navigationTabRef.value?.save()
     return
   }
+  if (currentTab.value === 'order_risk_control') {
+    await orderRiskControlTabRef.value?.save()
+    return
+  }
   loading.value = true
   try {
     if (currentTab.value === 'telegram') {
@@ -1359,6 +1366,11 @@ watch(currentTab, (newTab) => {
     </div>
 
     <!-- 回调路由配置 -->
+    <!-- 订单风控 -->
+    <div v-show="currentTab === 'order_risk_control'">
+      <SettingsOrderRiskControlTab ref="orderRiskControlTabRef" />
+    </div>
+
     <div v-show="currentTab === 'callback_routes'" class="space-y-6">
       <div class="rounded-xl border border-border bg-card">
         <div class="border-b border-border bg-muted/40 px-6 py-4">
