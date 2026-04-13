@@ -60,6 +60,12 @@ const routes = [
         meta: { permission: 'GET:/admin/orders' },
       },
       {
+        path: 'order-risk-control',
+        name: 'order-risk-control',
+        component: () => import('@/views/admin/OrderRiskControl.vue'),
+        meta: { permission: 'GET:/admin/settings' },
+      },
+      {
         path: 'payments',
         name: 'payments',
         component: () => import('@/views/admin/Payments.vue'),
@@ -72,10 +78,22 @@ const routes = [
         meta: { permission: 'GET:/admin/wallet/recharges' },
       },
       {
+        path: 'wallet-config',
+        name: 'wallet-config',
+        component: () => import('@/views/admin/Wallet.vue'),
+        meta: { permission: 'GET:/admin/settings' },
+      },
+      {
         path: 'payment-channels',
         name: 'payment-channels',
         component: () => import('@/views/admin/PaymentChannels.vue'),
         meta: { permission: 'GET:/admin/payment-channels' },
+      },
+      {
+        path: 'callback-routes',
+        name: 'callback-routes',
+        component: () => import('@/views/admin/CallbackRoutes.vue'),
+        meta: { permission: 'GET:/admin/settings' },
       },
       {
         path: 'users',
