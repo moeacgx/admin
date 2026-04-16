@@ -2050,6 +2050,10 @@ const messages = {
       coupons: {
         title: '优惠券',
         create: '新增优惠券',
+        paymentRoles: {
+          guest: '游客',
+          member: '会员',
+        },
         filterCode: '优惠码',
         filterScope: '适用商品',
         filterScopeAll: '全部商品',
@@ -2072,6 +2076,8 @@ const messages = {
           maxDiscount: '最大折扣',
           usageLimit: '总次数',
           perUserLimit: '单人限次',
+          paymentRoles: '付款角色限制',
+          memberLevels: '会员等级限制',
         },
         period: {
           startsAt: '开始',
@@ -2095,6 +2101,10 @@ const messages = {
           maxDiscount: '最大折扣',
           usageLimit: '总次数',
           perUserLimit: '单人限次',
+          paymentRoles: '付款角色限制 (选填)',
+          paymentRolesPlaceholder: '请选择允许的付款角色 (留空为不限制)',
+          memberLevels: '会员等级限制 (选填)',
+          memberLevelsPlaceholder: '请选择允许的会员等级 (留空为不限制)',
           startsAt: '开始时间',
           endsAt: '结束时间',
         },
@@ -5195,6 +5205,10 @@ const messages = {
       coupons: {
         title: '優惠券',
         create: '新增優惠券',
+        paymentRoles: {
+          guest: '游客',
+          member: '會員',
+        },
         filterCode: '優惠碼',
         filterScope: '適用商品',
         filterScopeAll: '全部商品',
@@ -5217,6 +5231,8 @@ const messages = {
           maxDiscount: '最大折扣',
           usageLimit: '總次數',
           perUserLimit: '單人限次',
+          paymentRoles: '付款角色限制',
+          memberLevels: '會員等級限制',
         },
         period: {
           startsAt: '開始',
@@ -5240,6 +5256,10 @@ const messages = {
           maxDiscount: '最大折扣',
           usageLimit: '總次數',
           perUserLimit: '單人限次',
+          paymentRoles: '付款角色限制 (選填)',
+          paymentRolesPlaceholder: '請選擇允許的付款角色 (留空為不限制)',
+          memberLevels: '會員等級限制 (選填)',
+          memberLevelsPlaceholder: '請選擇允許的會員等級 (留空為不限制)',
           startsAt: '開始時間',
           endsAt: '結束時間',
         },
@@ -8340,6 +8360,10 @@ const messages = {
       coupons: {
         title: 'Coupons',
         create: 'New coupon',
+        paymentRoles: {
+          guest: 'Guest',
+          member: 'Member',
+        },
         filterCode: 'Coupon code',
         filterScope: 'Product',
         filterScopeAll: 'All products',
@@ -8362,6 +8386,8 @@ const messages = {
           maxDiscount: 'Max discount',
           usageLimit: 'Usage limit',
           perUserLimit: 'Per user limit',
+          paymentRoles: 'Payment roles limit',
+          memberLevels: 'Member levels limit',
         },
         period: {
           startsAt: 'Start',
@@ -8385,6 +8411,10 @@ const messages = {
           maxDiscount: 'Max discount',
           usageLimit: 'Usage limit',
           perUserLimit: 'Per user limit',
+          paymentRoles: 'Payment roles limit (Optional)',
+          paymentRolesPlaceholder: 'Please select allowed payment roles (Leave blank means no limit)',
+          memberLevels: 'Member levels limit (Optional)',
+          memberLevelsPlaceholder: 'Please select allowed member levels (Leave blank means no limit)',
           startsAt: 'Start time',
           endsAt: 'End time',
         },
