@@ -33,3 +33,8 @@ npm run build
 ## Online Documentation
 
 - https://dujiao-next.com
+
+## Secondary Development / 二开说明
+
+This fork keeps the admin-side custom patches for production use.
+See `SECONDARY_DEVELOPMENT.md` for the current customization list and upstream sync notes.

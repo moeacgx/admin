@@ -2244,6 +2244,11 @@ const messages = {
             subtitle: '被封禁的邮箱将无法以游客身份下单。每行填写一个邮箱地址。',
             placeholder: '每行一个邮箱地址，例如：\nspam@example.com',
           },
+          emailDomainBlacklist: {
+            title: '邮箱域名黑名单',
+            subtitle: '被封禁的邮箱域名将无法注册账号，也无法以游客身份下单。每行填写一个邮箱域名或后缀，支持 example.com 或 @example.com。',
+            placeholder: '每行一个邮箱域名，例如：\nexample.com\nmailinator.com',
+          },
         },
         callbackRoutes: {
           title: '回调路由配置',
@@ -5403,6 +5408,11 @@ const messages = {
             subtitle: '被封禁的郵箱將無法以遊客身份下單。每行填寫一個郵箱地址。',
             placeholder: '每行一個郵箱地址，例如：\nspam@example.com',
           },
+          emailDomainBlacklist: {
+            title: '郵箱域名黑名單',
+            subtitle: '被封禁的郵箱域名將無法註冊帳號，也無法以遊客身份下單。每行填寫一個郵箱域名或後綴，支援 example.com 或 @example.com。',
+            placeholder: '每行一個郵箱域名，例如：\nexample.com\nmailinator.com',
+          },
         },
         callbackRoutes: {
           title: '回調路由配置',
@@ -8561,6 +8571,11 @@ const messages = {
             title: 'Email Blacklist',
             subtitle: 'Blocked emails will not be able to place guest orders. Enter one email per line.',
             placeholder: 'One email per line, e.g.:\nspam@example.com',
+          },
+          emailDomainBlacklist: {
+            title: 'Email Domain Blacklist',
+            subtitle: 'Blocked email domains cannot register accounts and cannot place guest orders. Enter one domain or suffix per line. Supports example.com or @example.com.',
+            placeholder: 'One domain per line, e.g.:\nexample.com\nmailinator.com',
           },
         },
         callbackRoutes: {

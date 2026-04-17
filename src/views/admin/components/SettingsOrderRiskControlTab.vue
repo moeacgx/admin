@@ -24,6 +24,7 @@ const form = reactive({
   },
   ip_blacklist_text: '',
   email_blacklist_text: '',
+  email_domain_blacklist_text: '',
 })
 
 const loadConfig = async () => {
@@ -47,6 +48,8 @@ const loadConfig = async () => {
       form.ip_blacklist_text = ipList?.join('\n') || ''
       const emailList = data.email_blacklist as string[] | undefined
       form.email_blacklist_text = emailList?.join('\n') || ''
+      const emailDomainList = data.email_domain_blacklist as string[] | undefined
+      form.email_domain_blacklist_text = emailDomainList?.join('\n') || ''
     }
   } catch {
     // ignore load error, use defaults
@@ -66,6 +69,10 @@ const save = async () => {
       .split('\n')
       .map((s: string) => s.trim().toLowerCase())
       .filter((s: string) => s.length > 0)
+    const emailDomainBlacklist = form.email_domain_blacklist_text
+      .split('\n')
+      .map((s: string) => s.trim().toLowerCase().replace(/^@+/, '').replace(/^\.+/, ''))
+      .filter((s: string) => s.length > 0)
 
     await adminAPI.updateSettings({
       key: 'order_risk_control_config',
@@ -82,6 +89,7 @@ const save = async () => {
         },
         ip_blacklist: ipBlacklist,
         email_blacklist: emailBlacklist,
+        email_domain_blacklist: emailDomainBlacklist,
       },
     })
     notifySuccess(t('admin.settings.alerts.saveSuccess'))
@@ -194,6 +202,20 @@ onMounted(() => {
       <Textarea
         v-model="form.email_blacklist_text"
         :placeholder="t('admin.settings.orderRiskControl.emailBlacklist.placeholder')"
+        rows="5"
+        class="font-mono text-sm"
+      />
+    </div>
+
+    <!-- 邮箱域名黑名单 -->
+    <div v-show="form.enabled" class="rounded-lg border p-6 space-y-4">
+      <div>
+        <h3 class="text-sm font-semibold">{{ t('admin.settings.orderRiskControl.emailDomainBlacklist.title') }}</h3>
+        <p class="mt-1 text-xs text-muted-foreground">{{ t('admin.settings.orderRiskControl.emailDomainBlacklist.subtitle') }}</p>
+      </div>
+      <Textarea
+        v-model="form.email_domain_blacklist_text"
+        :placeholder="t('admin.settings.orderRiskControl.emailDomainBlacklist.placeholder')"
         rows="5"
         class="font-mono text-sm"
       />
